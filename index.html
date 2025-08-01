@@ -14,6 +14,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Weather API</title>
   </head>
@@ -33,9 +39,68 @@
       </div>
     </header>
 
-    <!-- CONTENU PRINCIPAL -->
-    <div class="container"></div>
+    <section class="now">
+      <div class="now_left">
+        <div class="right_header">
+          <div class="country green">Triolet, Pamplemousses, Mauritius</div>
+        </div>
+        <div class="weather">
+          <div class="weather_icon">
+            <img
+              src="https://canizalesjd.github.io/weather-app/assets/icons/night/116.svg"
+              alt=""
+              style="width: 10rem"
+            />
+          </div>
+          <div class="weather_temp text_align_center">
+            <div class="weather_temp_number">
+              <div class="weather_temp_number_left">
+                22<span class="celsius">°</span>
+              </div>
+              <div class="weather_temp_number_right">
+                <div class="temp_min">
+                  <svg
+                    color="#4ca1af"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M19.72 13.7a1 1 0 00-1.43-1.4L13 17.67V4a1 1 0 10-2 0v13.66L5.72 12.3a1 1 0 00-1.43 1.4l6.82 6.93c.5.5 1.3.5 1.78 0l6.83-6.93z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                  <span>16°</span>
+                </div>
+                <div class="temp_max">
+                  <svg
+                    color="#4ca1af"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4.28 10.3a1 1 0 001.43 1.4L11 6.33V20a1 1 0 102 0V6.33l5.28 5.37a1 1 0 001.43-1.4l-6.82-6.93c-.5-.5-1.3-.5-1.78 0L4.28 10.3z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
 
-    <script src="/js/api.js"></script>
+                  <span>25°</span>
+                </div>
+              </div>
+            </div>
+            <div class="weather_temp_conditions">Partly cloudy</div>
+          </div>
+        </div>
+      </div>
+      <div class="now_right">
+        <div class="date">Friday 2025-08-01</div>
+        <div class="hourly_forecast">
+          <div class="hourly_forecast_title">Hourly Forecast</div>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="/js/api.js"></script>
   </body>
 </html>
