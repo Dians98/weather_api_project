@@ -1,0 +1,102 @@
+/* 1. Box sizing global (très important pour gérer largeur/hauteur facilement) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Typographie de base */
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #222;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 1rem;
+  background: linear-gradient(
+    to bottom,
+    #2c3e50,
+    #4ca1af
+  ); /* fond météo doux */
+  min-height: 100vh;
+}
+
+/* NAVBAR FIXE */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: transparent;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 15rem;
+  z-index: 1000;
+}
+
+.navbar .title {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.navbar .search {
+  display: flex;
+  justify-content: center;
+  width: 39%;
+  height: 3rem;
+  position: relative;
+}
+
+.navbar input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem 2rem;
+  border-radius: 5rem;
+  border: none;
+  outline: none;
+}
+
+.navbar .right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar button {
+  background-color: white;
+  color: #2196f3;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Contenu principal */
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+}
+
+.search_div {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  z-index: 99999;
+  background-color: #4ca1af;
+  padding: 0.5rem;
+  border-radius: 50%;
+  height: 2.7rem;
+  width: 2.7rem;
+  text-align: center;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
