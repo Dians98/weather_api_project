@@ -104,6 +104,12 @@ h1 {
   cursor: pointer;
 }
 
+.search_div.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .now {
   width: 68vw;
   display: flex;
@@ -148,6 +154,13 @@ h1 {
 
 .weather {
   display: flex;
+  align-items: center;
+}
+
+.weather_temp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 

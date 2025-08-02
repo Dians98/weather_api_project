@@ -1,7 +1,26 @@
+import { initialize_left_data } from "../js/utils.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   const apiKey = "6aceb1066fce41cfac1172926250108";
 
   let city = "triolet";
+
+  const search_btn = document.querySelector(".search_div");
+  let city_input = document.querySelector(".search input");
+
+  city_input.addEventListener("input", function () {
+    if (city_input.value.trim() !== "") {
+      search_btn.classList.remove("disabled");
+    } else {
+      search_btn.classList.add("disabled");
+    }
+  });
+
+  search_btn.addEventListener("click", function () {
+    if (city_input.value != "") {
+      get_weather_data(city_input.value, apiKey);
+    }
+  });
 
   async function get_weather_data(city, apiKey) {
     try {
@@ -19,19 +38,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const { name, region, country } = location;
 
-      const { temp_c, condition, humidity } = current;
-
-      const { text, icon } = condition;
+      const fullCountryName = `${name},  ${region}, ${country}`;
 
       const { forecastday } = forecast;
 
+      initialize_left_data(fullCountryName, current, forecastday);
+
       forecastday.forEach((day) => {
         const date = new Date(day.date);
-        const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
-        
+
         const maxTemp = day.day.maxtemp_c;
         const minTemp = day.day.mintemp_c;
-        
+
         const conditionText = day.day.condition.text;
         const conditionIcon = day.day.condition.icon;
       });
