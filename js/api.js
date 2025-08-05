@@ -1,9 +1,9 @@
-import { initialize_left_data } from "../js/utils.js";
+import { initialize_left_data, initialize_right_data } from "../js/utils.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const apiKey = "6aceb1066fce41cfac1172926250108";
 
-  let city = "triolet";
+  let city = "trou aux biches";
 
   const search_btn = document.querySelector(".search_div");
   let city_input = document.querySelector(".search input");
@@ -38,11 +38,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const { name, region, country } = location;
 
-      const fullCountryName = `${name},  ${region}, ${country}`;
+      const fullCountryName = `${name}, ${country}`;
 
       const { forecastday } = forecast;
 
       initialize_left_data(fullCountryName, current, forecastday);
+
+      initialize_right_data(forecastday)
 
       forecastday.forEach((day) => {
         const date = new Date(day.date);
