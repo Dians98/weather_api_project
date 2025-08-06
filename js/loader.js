@@ -3,5 +3,7 @@ window.addEventListener("load", () => {
     setTimeout(() => {
       loader.classList.add("hidden");
     }, 2000); // minimum 800ms affichage du loader
+
+    
   });
   
