@@ -22,7 +22,8 @@ export function initialize_left_data(fullCountryName, current, forecastday) {
 
   const { text, icon } = condition;
 
-  country.innerText = fullCountryName;
+  country.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${fullCountryName}`;
+
 
   weather_temp_number_left.firstChild.nodeValue = temp_c;
 
@@ -32,6 +33,8 @@ export function initialize_left_data(fullCountryName, current, forecastday) {
 
   temp_min_value.innerText = mintemp_c;
   temp_max_value.innerText = maxtemp_c;
+
+  initialize_upcoming_days(forecastday)
 }
 
 export function initialize_right_data(forecastday) {
@@ -42,7 +45,6 @@ export function initialize_right_data(forecastday) {
 
   const hourly = forecastday[0].hour
 
-  console.log(hourly);
 
 
   const { min_hourly, max_hourly } = get_hourly_forecast_index()
@@ -94,13 +96,76 @@ function get_hourly_forecast_index() {
   const date = new Date(); // Exemple : 2025-08-05T08:15:00
   const heure = date.getHours();
 
-  const min_hourly = heure
-  const max_hourly = heure + 7
+  const min_hourly = heure + 1
+  const max_hourly = heure + 8
 
   return {
     min_hourly,
     max_hourly
   };
+}
+
+function initialize_upcoming_days(forecastday) {
+  console.log(forecastday);
+
+  const daily_forecast_list = document.querySelector(".daily_forecast_list")
+
+  daily_forecast_list.innerHTML = ""
+
+  const daysArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  for (let i = 1; i <= 3; i++) {
+    const { date, day} = forecastday[i]
+
+    const {text, icon} = day.condition
+
+    const {daily_chance_of_rain} = day
+
+    const newDate = new Date(date)
+
+    const day_title = daysArray[newDate.getDay()]
+
+    const daily_forecast_item = document.createElement("div")
+    daily_forecast_item.className = "daily_forecast_item"
+
+    const daily_forecast_item_date = document.createElement("div")
+    daily_forecast_item_date.className = "daily_forecast_item_date"
+    daily_forecast_item_date.textContent = day_title
+
+    const daily_forecast_item_icon = document.createElement("img")
+    daily_forecast_item_icon.className = "daily_forecast_item_icon"
+    daily_forecast_item_icon.src = icon
+
+    const daily_forecast_item_conditions = document.createElement("div")
+    daily_forecast_item_conditions.className = "daily_forecast_item_conditions"
+    daily_forecast_item_conditions.textContent = text
+
+    const daily_forecast_item_weather = document.createElement("div")
+    daily_forecast_item_weather.className = "daily_forecast_item_weather"
+
+    
+
+    
+
+    const daily_forecast_rain = document.createElement("span")
+    daily_forecast_rain.className = "daily_forecast_rain"
+    daily_forecast_rain.textContent = `Chance of rain : ${daily_chance_of_rain}%`
+    
+
+    daily_forecast_list.appendChild(daily_forecast_item)
+
+
+    daily_forecast_item.appendChild(daily_forecast_item_date)
+    daily_forecast_item.appendChild(daily_forecast_item_icon)
+    daily_forecast_item.appendChild(daily_forecast_item_conditions)
+    daily_forecast_item.appendChild(daily_forecast_item_weather)
+
+
+    daily_forecast_item_weather.appendChild(daily_forecast_rain)
+
+
+
+  }
 }
 
 
